@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>subtitle parser self-check</title>
+Open devtools console, or just read the verdict below.
+<script src="content.js"></script>
+<script>
+const srt = [
+  '﻿1', '00:00:01,000 --> 00:00:02,500', 'Hello', '',
+  '2', '00:01:02,500 --> 00:02:03,000', 'Two', 'lines', ''
+].join('\r\n');
+const vtt = 'WEBVTT\n\n00:05.000 --> 00:06.200 align:middle\n<b>Tagged</b>\n';
+
+const s = parseSubtitles(srt);
+const v = parseSubtitles(vtt);
+const checks = [
+  s.length === 2,
+  s[0].start === 1 && s[0].end === 2.5 && s[0].text === 'Hello',
+  s[1].start === 62.5 && s[1].end === 123 && s[1].text === 'Two\nlines',
+  v.length === 1 && v[0].start === 5 && v[0].end === 6.2 && v[0].text === 'Tagged',
+];
+document.body.textContent = checks.every(Boolean) ? 'PASS' : 'FAIL: ' + JSON.stringify({ s, v });
+console.assert(checks.every(Boolean), { s, v });
+</script>
