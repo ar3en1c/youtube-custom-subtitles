@@ -64,8 +64,13 @@ function applySettings(s) {
     : 'none';
 }
 
-chrome.storage.sync.get(DEFAULTS, applySettings);
-chrome.storage.onChanged.addListener(() => chrome.storage.sync.get(DEFAULTS, applySettings));
+// Cross-browser storage. Firefox ignores the callback form of chrome.storage and its
+// storage.sync rejects for temporary add-ons, so use browser.storage.local + Promises.
+const storage = (typeof browser !== 'undefined' ? browser : chrome).storage;
+const store = storage.local;
+
+store.get(DEFAULTS).then(applySettings).catch(err => console.warn('[custom-subtitles] settings load failed:', err));
+storage.onChanged.addListener(() => store.get(DEFAULTS).then(applySettings).catch(err => console.warn('[custom-subtitles] settings reload failed:', err)));
 
 // True if the mouse event landed on el — even if an invisible YouTube layer
 // physically sits on top of it and stole the actual click target.

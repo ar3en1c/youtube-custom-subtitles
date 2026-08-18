@@ -1,6 +1,6 @@
 # Custom Subtitles for YouTube
 
-A Chrome extension that lets you load your own subtitle file (`.srt` or `.vtt`) on any YouTube video — perfect for watching videos with subtitles you translated yourself.
+A browser extension (Chrome **and** Firefox) that lets you load your own subtitle file (`.srt` or `.vtt`) on any YouTube video — perfect for watching videos with subtitles you translated yourself.
 
 ---
 
@@ -13,14 +13,24 @@ A Chrome extension that lets you load your own subtitle file (`.srt` or `.vtt`) 
   - Text color
   - Outline on/off, outline color, outline size
   - Background color and background opacity
-- Style settings are saved automatically and sync to your Google account
+- Style settings are saved automatically on your computer
 - No account, no network requests — everything stays on your computer
 
 ### Install
+
+**Chrome**
 1. Download / copy the `youtube-custom-subtitles` folder.
 2. Open Chrome and go to `chrome://extensions`.
 3. Turn on **Developer mode** (top-right switch).
 4. Click **Load unpacked** and select the `youtube-custom-subtitles` folder.
+
+**Firefox**
+1. Download / copy the `youtube-custom-subtitles` folder.
+2. Open Firefox and go to `about:debugging#/runtime/this-firefox`.
+3. Click **Load Temporary Add-on…**.
+4. Select the `manifest.json` file inside the `youtube-custom-subtitles` folder.
+
+> Temporary add-ons are removed when Firefox restarts. To install it permanently, submit it to [addons.mozilla.org](https://addons.mozilla.org) or use Firefox Developer Edition / Nightly with `xpinstall.signatures.required` set to `false`.
 
 ### Usage
 1. Open any YouTube video.
@@ -72,7 +82,7 @@ Hello world
 ## 🇮🇷 فارسی
 
 ### این افزونه چیست؟
-یک افزونه‌ی کروم که به شما اجازه می‌دهد فایل زیرنویس خودتان (`.srt` یا `.vtt`) را روی هر ویدیوی یوتیوب بارگذاری کنید — مناسب برای تماشای ویدیوها با زیرنویسی که خودتان ترجمه کرده‌اید.
+یک افزونه‌ی مرورگر (کروم **و** فایرفاکس) که به شما اجازه می‌دهد فایل زیرنویس خودتان (`.srt` یا `.vtt`) را روی هر ویدیوی یوتیوب بارگذاری کنید — مناسب برای تماشای ویدیوها با زیرنویسی که خودتان ترجمه کرده‌اید.
 
 ### امکانات
 - بارگذاری فایل زیرنویس `.srt` یا `.vtt` روی هر ویدیوی یوتیوب
@@ -81,14 +91,24 @@ Hello world
   - رنگ متن
   - خط دور (خاموش/روشن)، رنگ خط دور، ضخامت خط دور
   - رنگ پس‌زمینه و میزان شفافیت پس‌زمینه
-- تنظیمات ظاهر به‌صورت خودکار ذخیره و با حساب گوگل شما همگام می‌شود
+- تنظیمات ظاهر به‌صورت خودکار روی رایانه‌ی شما ذخیره می‌شود
 - بدون حساب کاربری و بدون اتصال به اینترنت — همه‌چیز روی کامپیوتر خودتان می‌ماند
 
 ### نصب
+
+**کروم**
 1. پوشه‌ی `youtube-custom-subtitles` را دانلود یا کپی کنید.
 2. در کروم به آدرس `chrome://extensions` بروید.
 3. گزینه‌ی **Developer mode** را (بالا سمت راست) روشن کنید.
 4. روی **Load unpacked** کلیک کنید و پوشه‌ی `youtube-custom-subtitles` را انتخاب کنید.
+
+**فایرفاکس**
+1. پوشه‌ی `youtube-custom-subtitles` را دانلود یا کپی کنید.
+2. در فایرفاکس به آدرس `about:debugging#/runtime/this-firefox` بروید.
+3. روی **Load Temporary Add-on…** کلیک کنید.
+4. فایل `manifest.json` را داخل پوشه‌ی `youtube-custom-subtitles` انتخاب کنید.
+
+> افزونه‌های موقت بعد از بستن فایرفاکس حذف می‌شوند. برای نصب دائمی، آن را در [addons.mozilla.org](https://addons.mozilla.org) منتشر کنید یا از Firefox Developer Edition / Nightly با `xpinstall.signatures.required = false` استفاده کنید.
 
 ### استفاده
 1. هر ویدیویی را در یوتیوب باز کنید.

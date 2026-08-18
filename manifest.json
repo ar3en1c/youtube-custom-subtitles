@@ -13,5 +13,11 @@
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "custom-subtitles-for-youtube@example.org",
+      "strict_min_version": "109.0"
+    }
+  }
 }
