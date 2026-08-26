@@ -54,9 +54,12 @@ function hexToRgba(hex, a) {
 function applySettings(s) {
   settings = s;
   if (!span) return; // applied again once the overlay exists
+  const hasText = span.textContent.length > 0;
   span.style.color = s.color;
-  span.style.backgroundColor = s.bgOpacity > 0 ? hexToRgba(s.bg, s.bgOpacity / 100) : 'transparent';
-  span.style.padding = s.bgOpacity > 0 ? '2px 10px' : '0';
+  span.style.backgroundColor = hasText && s.bgOpacity > 0
+    ? hexToRgba(s.bg, s.bgOpacity / 100)
+    : 'transparent';
+  span.style.padding = hasText && s.bgOpacity > 0 ? '2px 10px' : '0';
   const o = s.outline ? s.outlineSize : 0;
   span.style.textShadow = o > 0
     ? o + 'px 0 0 ' + s.outlineColor + ',-' + o + 'px 0 0 ' + s.outlineColor +
@@ -93,6 +96,7 @@ document.addEventListener('click', e => {
   } else if (clearBtn.style.display !== 'none' && hit(clearBtn, e)) {
     cues = null; cur = null;
     span.textContent = '';
+    applySettings(settings);
     clearBtn.style.display = 'none';
   }
 }, true);
@@ -146,13 +150,17 @@ function tick() {
   if (location.href !== lastUrl) { // YouTube SPA navigation -> different video
     lastUrl = location.href;
     cues = null; cur = null;
-    if (span) span.textContent = '';
+    if (span) {
+      span.textContent = '';
+      applySettings(settings);
+    }
   }
   if (cues && video && video.isConnected) {
     const t = video.currentTime;
     if (!(cur && t >= cur.start && t < cur.end)) {
       cur = cues.find(c => t >= c.start && t < c.end) || null;
       span.textContent = cur ? cur.text : '';
+      applySettings(settings);
     }
   }
   requestAnimationFrame(tick);
